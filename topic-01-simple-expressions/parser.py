@@ -3,6 +3,7 @@ expression = term { ("+" | "-") term }
 term = factor { ("*" | "/") factor }
 factor = number | "(" expression ")"
 number = <number>
+unary negation = { "-" factor }
 """
 
 
@@ -31,6 +32,14 @@ def parse_term(tokens):
 def parse_factor(tokens):
     token = tokens[0]
     tag = token["tag"]
+
+    #implementation of unary operator
+    #check for negation
+    if tag == "-":
+        node, tokens = parse_factor(tokens[1:])
+        return create_node("negation", right = right_value, value = "-"), tokens
+
+
     if tag == "number":
         return create_node("number", value=token["value"]), tokens[1:]
     if tag == "(":

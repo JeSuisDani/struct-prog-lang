@@ -13,8 +13,13 @@ def evaluate(ast):
 
     if ast["tag"] == "+":
         return left_value + right_value
+    #easier implementaion to check for word instead of check which version of the minus symbol it is
+    elif ast["tag"] == "negation"
+        return left_value * -1 #multiply by negative 1 to flip sign
     elif ast["tag"] == "-":
         return left_value - right_value
+    elif ast["tag"]
+        return 
     elif ast["tag"] == "*":
         return left_value * right_value
     elif ast["tag"] == "/":
@@ -87,6 +92,15 @@ def test_evaluate_division_by_zero():
     except Exception as e:
         assert str(e) == "Division by zero"
 
+def test_evaluate_negation(): #
+    print("testing negation unary operator.") #lower bounds oriented
+        equals("-1-1",-2)
+        equals("-1+-1",-2)
+        equals("-1+1",0)
+        equals("-12-8",-20)
+        equals("-12+-8",-20)
+        equals("-12+8",-4)
+
 
 if __name__ == "__main__":
     print("testing evaluator.")
@@ -95,4 +109,5 @@ if __name__ == "__main__":
     test_evaluate_subtraction()
     test_evaluate_division()
     test_evaluate_division_by_zero()
+    test_evaluate_negation()  #
     print("done.")
