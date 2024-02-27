@@ -1,3 +1,5 @@
+# Mark Luther
+
 def evaluate(ast):
     # Base case: if the node is a number, return its value as a float
     if ast["tag"] == "number":
